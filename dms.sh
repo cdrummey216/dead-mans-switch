@@ -32,9 +32,10 @@ fi
 # In this case, the mail(s) have been sent already.
 [ -f "${dms_sent}" ] && echo "The switch has been triggered already." && exit 0
 
-dead_address="cdrummey216@gmail.com"
-send_addresses==$'\n' read -d '' -r -a lines < /var/www/html/dmr.txt
-
+#dead_address="test@gmail.com"
+#send_addresses=$'\n' read -d '' -r -a lines < /var/www/html/dmr.txt
+read -d '' -r -a send_addresses < /var/www/html/dmr.txt
+read -d '' -r -a dead_address < /var/www/html/dme.txt
 
 [ ! -f "${dead_man_timestamp_path}" ] && echo "Timestamp file not found. Exiting." && exit 1
 timestamp="$(cat "${dead_man_timestamp_path}")"
@@ -47,13 +48,12 @@ echo "${time_diff} hours have passed since the last sign of life."
 # 336 hours are 14 days
 if [ "$time_diff" -ge 12 ]; then
     echo "The switch is now being triggered."
-
     for f in "${send_addresses[@]}"; do
         echo "Sending mail to ${f}..."
-        printf "%s\n Sending dmm..." && python3 dms_emailer.py ${f}
+        printf "%s\n Sending dmm to ${f}..." && python3 /home/cdrummey/Desktop/dead-mans-switch/dms_emailer.py ${f}
     done
     echo "Sending confirmation mail to address of dead person..."
-    printf "%s\n Sending confirmation email..." && python3 dms_emailer.py "$dead_address"
+    printf "%s\n Sending confirmation email..." && python3 /home/cdrummey/Desktop/dead-mans-switch/dms_emailer.py "$dead_address"
     echo "All further executions of this script will now result in an immediate exit."
     touch "${dms_sent}"
     exit 0
