@@ -5,6 +5,5 @@ Description=Dead mans switch
 Type=simple
 User=root
 Group=root
-ExecStart=/path/to/dms
+ExecStart=/var/www/html/dms.sh
 TimeoutStartSec=1800
-Nice=-19
