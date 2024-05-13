@@ -27,13 +27,8 @@ silmaril4 = Path('/var/www/html/mailserver_password.txt').read_text()
 silmaril5 = Path('/var/www/html/mailserver_port.txt').read_text()
 
 # Configuration
-port = 2525
-#smtp_server = "live.smtp.mailtrap.io"
-#sender_email = "mailtrap@demomailtrap.com"
-#receiver_email = "test@gmail.com"
-#password = "84d9f605ae4c9cbddc07a0679ceb0f22"
-#login = "api"
 
+port = silmaril5
 smtp_server = silmaril2
 login = silmaril3 
 password = silmaril4
