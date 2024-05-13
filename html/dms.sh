@@ -50,10 +50,10 @@ if [ "$time_diff" -ge 12 ]; then
     echo "The switch is now being triggered."
     for f in "${send_addresses[@]}"; do
         echo "Sending mail to ${f}..."
-        printf "%s\n Sending dmm to ${f}..." && python3 /home/cdrummey/Desktop/dead-mans-switch/dms_emailer.py ${f}
+        printf "%s\n Sending dmm to ${f}..." && python3 ./dms_emailer.py ${f}
     done
     echo "Sending confirmation mail to address of dead person..."
-    printf "%s\n Sending confirmation email..." && python3 /home/cdrummey/Desktop/dead-mans-switch/dms_emailer.py "$dead_address"
+    printf "%s\n Sending confirmation email..." && python3 ./dms_emailer.py "$dead_address"
     echo "All further executions of this script will now result in an immediate exit."
     touch "${dms_sent}"
     exit 0
@@ -65,7 +65,7 @@ fi
 # If the time difference has reached 336-24 hours before the send threshold, we send a warning (if not already done)
 if [ "$time_diff" -ge 312 ]; then
     echo "Sending warning email..."
-    printf "%s\n Sending warning email..." && python3 dms_warning_emailer.py "$dead_address"
+    printf "%s\n Sending warning email..." && python3 ./dms_warning_emailer.py "$dead_address"
     echo "No further warning emails will be sent."
     touch "${warning_sent}"
 fi
