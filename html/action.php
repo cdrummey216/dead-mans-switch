@@ -37,11 +37,13 @@ file_put_contents($pathtofile, $content);
             Dead Man's Homepage
         </h1>
 	<ul> 
-	<li><a href="/dmm.php">My Message</a></li> 
+	<li><a href="/dmm.php">My Final Message</a></li>
+	<li><a href="/dmw.php">My Warning Message</a></li>
 	<li><a href="/dme.php">My Email</a></li>
 	<li><a href="/dmr.php">My Recipients</a></li> 
 	<li><a href="/mailserver.php">My Mailserver</a></li>
 	<li><a href="/mailserver_port.php">My Mailserver Port</a></li>
+	<li><a href="/mailserver_from.php">My Mailserver From Address</a></li>
 	<li><a href="/mailserver_login.php">My Mailserver Login</a></li>
 	<li><a href="/mailserver_password.php">My Mailserver Password</a></li> 
     </body>
