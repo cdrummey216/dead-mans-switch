@@ -1,8 +1,9 @@
 # dead-mans-switch
-
+![DMS](image.jpg)
 Install (copy) /html to /var/www/html and /systemd to /etc/systemd/system. Or use the install.sh script.
 
 Then, in a browser, go to the server homepage (localhost) and configure the switch.
 
-Then, enable the service using: 
+Then, start the service using:
+
   sudo systemctl start dead-mans-switch
