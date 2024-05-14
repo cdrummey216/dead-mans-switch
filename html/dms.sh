@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
 datapath="/var/www/html/dms_logs"
-dead_man_timestamp_path="${datapath}/dmt"
+dead_man_timestamp_path="${datapath}/dmt.txt"
 
 # If you don't want to attach any files, set the variable to ()
 # If you intend to share secrets, an encrypted file should be sent as attachment.
 # The key should be known to the recipients beforehand.
 
-warning_sent="${datapath}/wsent"
-dms_sent="${datapath}/dmssent"
-dns_killswitch_path="${datapath}/killswitch"
+warning_sent="${datapath}/wsent.txt"
+dms_sent="${datapath}/dmssent.txt"
+dns_killswitch_path="${datapath}/killswitch.txt"
 
 # Don't want to use a DNS killswitch? Set the hostname variable to an empty value.
 dns_killswitch_hostname=""
@@ -46,7 +46,7 @@ time_now="$(date +%s)"
 time_diff=$(( ( "${time_now}" - "${timestamp}" ) / 3600 ))
 echo "${time_diff} hours have passed since the last sign of life."
 # 336 hours are 14 days
-if [ "$time_diff" -ge 12 ]; then
+if [ "$time_diff" -ge 336 ]; then
     echo "The switch is now being triggered."
     for f in "${send_addresses[@]}"; do
         echo "Sending mail to ${f}..."

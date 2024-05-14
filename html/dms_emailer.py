@@ -25,6 +25,7 @@ silmaril2 = Path('/var/www/html/mailserver.txt').read_text()
 silmaril3 = Path('/var/www/html/mailserver_login.txt').read_text()
 silmaril4 = Path('/var/www/html/mailserver_password.txt').read_text()
 silmaril5 = Path('/var/www/html/mailserver_port.txt').read_text()
+silmaril6 = Path('/var/www/html/mailserver_from.txt').read_text()
 
 # Configuration
 
@@ -32,7 +33,7 @@ port = silmaril5
 smtp_server = silmaril2
 login = silmaril3 
 password = silmaril4
-sender_email = "from@example.com"
+sender_email = silmaril6
 dead_email = silmaril1
 receiver_email = recipient
 
