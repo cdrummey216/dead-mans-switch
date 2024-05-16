@@ -46,7 +46,7 @@ time_now="$(date +%s)"
 time_diff=$(( ( "${time_now}" - "${timestamp}" ) / 3600 ))
 echo "${time_diff} hours have passed since the last sign of life."
 # 336 hours are 14 days
-if [ "$time_diff" -ge 12 ]; then
+if [ "$time_diff" -ge 336 ]; then
     echo "The switch is now being triggered."
     for f in "${send_addresses[@]}"; do
         echo "Sending mail to ${f}..."
