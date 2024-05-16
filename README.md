@@ -8,3 +8,8 @@ Then, in a browser, go to the server homepage (localhost) and configure the swit
 Then, start the service using:
 
  systemctl start dead-mans-switch
+
+
+Thanks for kescherCode for the original dms.sh 
+
+https://github.com/kescherCode/dead-mans-switch/blob/main/dms.sh
