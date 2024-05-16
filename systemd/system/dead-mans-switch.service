@@ -1,0 +1,9 @@
+[Unit]
+Description=Dead mans switch
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/var/www/html/dms.sh
+TimeoutStartSec=1800
