@@ -2,6 +2,8 @@
 
 datapath="/var/www/html/dms_logs"
 dead_man_timestamp_path="${datapath}/dmt.txt"
+# Original Script by kescherCode
+# https://github.com/kescherCode/dead-mans-switch/blob/main/dms.sh
 
 # If you don't want to attach any files, set the variable to ()
 # If you intend to share secrets, an encrypted file should be sent as attachment.
