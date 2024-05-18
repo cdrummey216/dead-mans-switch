@@ -13,14 +13,9 @@
             <div
                 data-repeat="true"
                 data-layout="horizontal center fit"
-                data-transform="preset(d, h, m, s) -> delay"
-            >
+                data-transform="preset(d, h, m, s) -> delay">
                 <div class="tick-group">
-                    <div
-                        data-key="value"
-                        data-repeat="true"
-                        data-transform="pad(00) -> split -> delay"
-                    >
+                    <div data-key="value" data-repeat="true" data-transform="pad(00) -> split -> delay">
                         <span data-view="flip"></span>
                     </div>
 
@@ -29,12 +24,12 @@
             </div>
         </div>
 
-<h3>Last sign of life:</h3>
+<h3>LAST SIGN OF LIFE:</h3>
 <?php
 $output = shell_exec('./dms-update.sh');
 echo "<div>$output</div>";
 ?>
-<h3>Next Switch Activation:</h3>
+<h3>NEXT SWITCH ACTIVATION:</h3>
 <div class="wrapper">
 	<div class="clock animated flipInX"></div>
 </div>
@@ -94,32 +89,6 @@ function checkTime(i) {
 
         <script>
             function handleTickInit(tick) {
-                // Uncomment to set labels to different language ( in this case Dutch )
-                /*
-        var locale = {
-            YEAR_PLURAL: 'Jaren',
-            YEAR_SINGULAR: 'Jaar',
-            MONTH_PLURAL: 'Maanden',
-            MONTH_SINGULAR: 'Maand',
-            WEEK_PLURAL: 'Weken',
-            WEEK_SINGULAR: 'Week',
-            DAY_PLURAL: 'Dagen',
-            DAY_SINGULAR: 'Dag',
-            HOUR_PLURAL: 'Uren',
-            HOUR_SINGULAR: 'Uur',
-            MINUTE_PLURAL: 'Minuten',
-            MINUTE_SINGULAR: 'Minuut',
-            SECOND_PLURAL: 'Seconden',
-            SECOND_SINGULAR: 'Seconde',
-            MILLISECOND_PLURAL: 'Milliseconden',
-            MILLISECOND_SINGULAR: 'Milliseconde'
-        };
-
-        for (var key in locale) {
-            if (!locale.hasOwnProperty(key)) { continue; }
-            tick.setConstant(key, locale[key]);
-        }
-        */
 
                 var nextYear = new Date(Date.now() + 12096e5);
 
@@ -128,35 +97,40 @@ function checkTime(i) {
                 };
             }
         </script>
-        <h3><a href="/action.php">Configure Switch</a></h3>
+
             <?php
         if(array_key_exists('button1', $_POST)) { 
             button1(); 
         } 
         else if(array_key_exists('button2', $_POST)) { 
             button2(); 
-        } 
-        //start stop restart service, dms-update
+        }
+        else if(array_key_exists('button3', $_POST)) { 
+            button3(); 
+        }
         function button1() { 
-            //run shell_exec commands here
-            //systemctl restart dead-mans-switch
             $output0 = shell_exec('systemctl restart dead-mans-switch');
 	    echo "<div>$output0</div>";
         } 
         function button2() { 
-        //run shell_exec commands here
-        //systemctl status dead-mans-switch
             $output1 = shell_exec('systemctl status dead-mans-switch');
 	    echo "<div>Status: $output1</div>"; 
         } 
+        function button3() { 
+		$output2 = shell_exec('./dms-update.sh');
+		echo "<div>$output2</div>";
+        } 
     ?> 
-  <h3>Service Monitor</h3>
+  <h3>SERVICE MONITOR</h3>
     <form method="post"> 
         <input type="submit" name="button1"
                 class="button" value="Restart" /> 
           
         <input type="submit" name="button2"
-                class="button" value="Status" /> 
+                class="button" value="Status" />
+         <input type="submit" name="button3"
+                class="button" value="I'm alive." /> 
     </form>
+            <h3><a href="/action.php">CONFIGURE SWITCH</a></h3>
 </body>
 </html>
