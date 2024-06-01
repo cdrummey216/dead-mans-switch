@@ -1,1 +1,1 @@
-smtp.host.com
+sandbox.smtp.mailtrap.io

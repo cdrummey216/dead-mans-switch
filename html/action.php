@@ -40,7 +40,8 @@ file_put_contents($pathtofile, $content);
 	<li><a href="/dmm.php">My Final Message</a></li>
 	<li><a href="/dmw.php">My Warning Message</a></li>
 	<li><a href="/dme.php">My Email</a></li>
-	<li><a href="/dmr.php">My Recipients</a></li> 
+	<li><a href="/dmr.php">My Recipients</a></li>
+	<li><a href="/dmtd.php">My Delay (in hours)</a></li>
 	<li><a href="/mailserver.php">My Mailserver</a></li>
 	<li><a href="/mailserver_port.php">My Mailserver Port</a></li>
 	<li><a href="/mailserver_from.php">My Mailserver From Address</a></li>

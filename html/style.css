@@ -31,6 +31,7 @@ video {
 body {
   font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight: 600;
+  text-align: center;
 }
 
 fieldset {
@@ -68,7 +69,6 @@ input[type=submit] {
   width: auto;
   margin-top:7px;
   margin-left:7px;
-  float:left;
 }
 
 input[type=submit]:hover,

@@ -97,7 +97,7 @@ function checkTime(i) {
                 };
             }
         </script>
-
+ <h3>SERVICE MONITOR</h3>
             <?php
         if(array_key_exists('button1', $_POST)) { 
             button1(); 
@@ -109,7 +109,7 @@ function checkTime(i) {
             button3(); 
         }
         function button1() { 
-            $output0 = shell_exec('systemctl restart dead-mans-switch');
+            $output0 = shell_exec('systemctl start dead-mans-switch');
 	    echo "<div>$output0</div>";
         } 
         function button2() { 
@@ -117,19 +117,19 @@ function checkTime(i) {
 	    echo "<div>Status: $output1</div>"; 
         } 
         function button3() { 
-		$output2 = shell_exec('./dms-update.sh');
+		$output2 = shell_exec('systemctl stop dead-mans-switch');
 		echo "<div>$output2</div>";
         } 
     ?> 
-  <h3>SERVICE MONITOR</h3>
+ 
     <form method="post"> 
         <input type="submit" name="button1"
-                class="button" value="Restart" /> 
+                class="button" value="Start" /> 
           
         <input type="submit" name="button2"
                 class="button" value="Status" />
          <input type="submit" name="button3"
-                class="button" value="I'm alive." /> 
+                class="button" value="Stop" /> 
     </form>
             <h3><a href="/action.php">CONFIGURE SWITCH</a></h3>
 </body>

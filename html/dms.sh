@@ -2,8 +2,6 @@
 
 datapath="/var/www/html/dms_logs"
 dead_man_timestamp_path="${datapath}/dmt.txt"
-# Original Script by kescherCode
-# https://github.com/kescherCode/dead-mans-switch/blob/main/dms.sh
 
 # If you don't want to attach any files, set the variable to ()
 # If you intend to share secrets, an encrypted file should be sent as attachment.
@@ -38,6 +36,7 @@ fi
 #send_addresses=$'\n' read -d '' -r -a lines < /var/www/html/dmr.txt
 read -d '' -r -a send_addresses < /var/www/html/dmr.txt
 read -d '' -r -a dead_address < /var/www/html/dme.txt
+read -d '' -r -a time_delay < /var/www/html/dmtd.txt
 
 [ ! -f "${dead_man_timestamp_path}" ] && echo "Timestamp file not found. Exiting." && exit 1
 timestamp="$(cat "${dead_man_timestamp_path}")"
@@ -48,7 +47,7 @@ time_now="$(date +%s)"
 time_diff=$(( ( "${time_now}" - "${timestamp}" ) / 3600 ))
 echo "${time_diff} hours have passed since the last sign of life."
 # 336 hours are 14 days
-if [ "$time_diff" -ge 336 ]; then
+if [ "$time_diff" -ge "$time_delay" ]; then
     echo "The switch is now being triggered."
     for f in "${send_addresses[@]}"; do
         echo "Sending mail to ${f}..."
