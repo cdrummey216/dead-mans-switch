@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-rsync -av --delete --progress ~/Desktop/Files/. /var/www/html/dms_files/.
+rsync -av --delete --progress ~/Desktop/dms_files/. /var/www/html/dms_files/.
+
 datapath="/var/www/html/dms_logs"
 dead_man_timestamp_path="${datapath}/dmt.txt"
 
