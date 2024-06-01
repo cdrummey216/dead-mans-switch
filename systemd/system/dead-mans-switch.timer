@@ -1,8 +1,8 @@
 [Unit]
-Description=Dead man switch timer
+Description=Dead mans switch timer
 
 [Timer]
-OnCalendar=hourly
+OnCalendar=*:0/1
 Persistent=true
 
 [Install]

@@ -2,8 +2,7 @@
 Description=Dead mans switch
 
 [Service]
-Type=simple
-User=root
-Group=root
-ExecStart=/var/www/html/dms.sh
+Type=oneshot
+ExecStart=/usr/bin/env /var/www/html/dms.sh
+RemainAfterExit=true
 TimeoutStartSec=1800
