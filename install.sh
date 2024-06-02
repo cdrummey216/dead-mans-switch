@@ -20,7 +20,7 @@ fi
 #
 # Create the desktop folder for dms files
 #
-if ! mkdir "/home/cdrummey/Desktop/dms_files"; then
+if ! mkdir "/home/$USER/Desktop/dms_files"; then
     echo "Failed to create /dms_files on the desktop, may already exist"
 fi
 #
