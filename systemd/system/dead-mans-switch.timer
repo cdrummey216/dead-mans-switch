@@ -1,9 +1,11 @@
 [Unit]
 Description=Dead mans switch timer
+Requires=dead-mans-switch.service
 
 [Timer]
 OnCalendar=*:0/1
 Persistent=true
+Unit=dead-mans-switch.service
 
 [Install]
-WantedBy=timers.target
+WantedBy=multi-user.target

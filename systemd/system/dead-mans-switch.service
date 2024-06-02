@@ -3,6 +3,9 @@ Description=Dead mans switch
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/env /var/www/html/dms.sh
+ExecStart=/bin/bash /var/www/html/dms.sh
 RemainAfterExit=true
 TimeoutStartSec=1800
+
+[Install]
+WantedBy=multi-user.target
