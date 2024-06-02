@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-
-rsync -av --delete /home/$USER/Desktop/dms_files/. /var/www/html/dms_files/.
+read -d '' -r -a deadman < /var/www/html/dms_logs/deadman.txt
+rsync -av --delete /home/${deadman}/Desktop/dms_files/. /var/www/html/dms_files/.
 
 datapath="/var/www/html/dms_logs"
 dead_man_timestamp_path="${datapath}/dmt.txt"
