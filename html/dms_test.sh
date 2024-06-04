@@ -2,12 +2,6 @@
 read -d '' -r -a deadman < /var/www/html/dms_logs/deadman.txt
 rsync -av --delete /home/${deadman}/Desktop/dms_files/. /var/www/html/dms_files/.
 
-pid=$(echo $$) # Current instance PID
-date=$(date +%s) # Seconds since Epoch
-logfile="/var/www/html/dms_logs/dms.$date.$pid.log"
-echo "{$date} RYSNC successful A" > $logfile
-echo "{$date} RYSNC successful B" >> $logfile
-
 datapath="/var/www/html/dms_logs"
 dead_man_timestamp_path="${datapath}/dmt.txt"
 
@@ -55,16 +49,15 @@ time_now="$(date +%s)"
 time_diff=$(( ( "${time_now}" - "${timestamp}" ) / 3600 ))
 echo "${time_diff} hours have passed since the last sign of life."
 # 336 hours are 14 days
-if [ "$time_diff" -ge "$time_delay" ]; then
+if [ 1 -ge 1 ]; then
     echo "The switch is now being triggered."
     for f in "${send_addresses[@]}"; do
         echo "Sending mail to ${f}..."
-        printf "%s\n Sending dmm to ${f}..." && python3 /var/www/html/dms_emailer.py ${f}
+        printf "%s\n Sending dmm to ${f}..." && python3 /var/www/html/dms_emailer.py "$dead_address"
     done
     echo "Sending confirmation mail to address of dead person..."
     printf "%s\n Sending confirmation email..." && python3 /var/www/html/dms_emailer.py "$dead_address"
     echo "All further executions of this script will now result in an immediate exit."
-    touch "${dms_sent}"
     exit 0
 fi
 

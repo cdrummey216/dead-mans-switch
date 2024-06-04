@@ -9,20 +9,7 @@
 </head>
 <body onload="startTime()">
 <h1>Dead Man's Clock</h1>
-        <div class="tick" data-did-init="handleTickInit">
-            <div
-                data-repeat="true"
-                data-layout="horizontal center fit"
-                data-transform="preset(d, h, m, s) -> delay">
-                <div class="tick-group">
-                    <div data-key="value" data-repeat="true" data-transform="pad(00) -> split -> delay">
-                        <span data-view="flip"></span>
-                    </div>
 
-                    <span data-key="label" data-view="text" class="tick-label"></span>
-                </div>
-            </div>
-        </div>
 
 <h3>LAST SIGN OF LIFE:</h3>
 <?php
@@ -48,7 +35,7 @@ function startTime() {
     hr = checkTime(hr);
     min = checkTime(min);
     sec = checkTime(sec);
-    //document.getElementById("clock").innerHTML = hr + ":" + min + ":" + sec + " " + ap;
+    document.getElementById("clock").innerHTML = hr + ":" + min + ":" + sec + " " + ap;
     
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -68,35 +55,7 @@ function checkTime(i) {
     return i;
 }
 </script>
-        <style>
-            .tick {
-                padding-bottom: 1em;
-                font-size: 1rem;
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans,
-                    Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-            }
 
-            .tick-label {
-                font-size: 0.375em;
-                text-align: center;
-            }
-
-            .tick-group {
-                margin: 0 0.25em;
-                text-align: center;
-            }
-        </style>
-
-        <script>
-            function handleTickInit(tick) {
-
-                var nextYear = new Date(Date.now() + 12096e5);
-
-                Tick.count.down(nextYear + '-01-01').onupdate = function (value) {
-                    tick.value = value;
-                };
-            }
-        </script>
  <h3>SERVICE MONITOR</h3>
             <?php
         if(array_key_exists('button1', $_POST)) { 
@@ -107,6 +66,12 @@ function checkTime(i) {
         }
         else if(array_key_exists('button3', $_POST)) { 
             button3(); 
+        }
+	else if(array_key_exists('button4', $_POST)) { 
+            button4(); 
+        }
+	else if(array_key_exists('button5', $_POST)) { 
+            button5(); 
         }
         function button1() { 
             $output0 = shell_exec('systemctl start dead-mans-switch');
@@ -120,6 +85,14 @@ function checkTime(i) {
 		$output2 = shell_exec('systemctl stop dead-mans-switch');
 		echo "<div>$output2</div>";
         } 
+        function button4() { 
+		$output3 = shell_exec('./dms_test.sh');
+		echo "<div>$output3</div>";
+        } 
+	function button5() { 
+		$output4 = shell_exec('systemctl stop dead-mans-switch');
+		echo "<div>$output4</div>";
+        } 
     ?> 
  
     <form method="post"> 
@@ -130,6 +103,8 @@ function checkTime(i) {
                 class="button" value="Status" />
          <input type="submit" name="button3"
                 class="button" value="Stop" /> 
+	<input type="submit" name="button4"
+                class="button" value="Test" />
     </form>
             <h3><a href="/action.php">CONFIGURE SWITCH</a></h3>
 </body>
