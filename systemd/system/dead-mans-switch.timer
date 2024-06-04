@@ -4,7 +4,6 @@ Requires=dead-mans-switch.service
 
 [Timer]
 OnCalendar=*:0/1
-Persistent=true
 Unit=dead-mans-switch.service
 
 [Install]
