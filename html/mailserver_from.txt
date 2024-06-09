@@ -1,1 +1,1 @@
-from@example.com
+mailtrap@demomailtrap.com
