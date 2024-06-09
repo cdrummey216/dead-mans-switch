@@ -1,1 +1,1 @@
-sandbox.smtp.mailtrap.io
+live.smtp.mailtrap.io
