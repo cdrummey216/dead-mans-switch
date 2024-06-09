@@ -7,42 +7,42 @@ read -p "What's your username, deadman? As above, so below: " deadmanname
 if ! cp -a ./html/. /var/www/html; then
     echo "Failed to copy to /var/www/html"
 fi
-echo -e "\nSuccessfully copied to /var/www/html. You have space.\n"
+echo -e "\n#########################\nCopied switch to /var/www/html. You have space.\n#########################\n"
 #
 # chmod the html files
 #
 if ! chmod -R 0777 /var/www/html/*; then
     echo "Failed to chmod /var/www/html/*"
 fi
-echo -e "\nSuccessfully chmod to /var/www/html/*. You can change.\n"
+echo -e "\n#########################\nSuccessfully chmod /var/www/html/*. You can change.\n#########################\n"
 #
 # Copy the service and timer
 #
 if ! cp -a ./systemd/system/. /etc/systemd/system; then
     echo "Failed to copy to /etc/systemd/system"
 fi
-echo -e "\nSuccessfully copied to /etc/systemd/system. You have time.\n"
+echo -e "\n#########################\nCopied to /etc/systemd/system. You have time.\n#########################\n"
 #
 # Create deadman file
 #
 if ! echo $deadmanname > "/var/www/html/dms_logs/deadman.txt"; then
     echo "Failed to log deadman username"
 fi
-echo -e "\nSuccessfully logged deadman username. You have a name.\n"
+echo -e "\n#########################\nLogged deadman username. You have a name.\n#########################\n"
 #
 # Update the timestamp to current time
 #
 if ! date +%s > "/var/www/html/dms_logs/dmt.txt"; then
     echo "Failed to update timestamp"
 fi
-echo -e "\nSuccessfully logged sign of life. You're alive.\n"
+echo -e "\n#########################\nLogged sign of life. You're alive.\n#########################\n"
 #
 # Create the desktop folder for dms files
 #
 if ! mkdir "/home/$deadmanname/Desktop/dms_files"; then
     echo "Failed to create /dms_files on the desktop, may already exist"
 fi
-echo -e "\nSuccessfully created a folder. Time to fill it with something.\n"
+echo -e "\n#########################\nCreated a /dms_file folder on the desktop. Time to fill it with something.\n#########################\n"
 #
 # Start service
 #
@@ -50,7 +50,7 @@ if ! systemctl enable --now dead-mans-switch.service; then
     echo "Failed to enable dead-mans-switch.service"
     exit 1
 fi
-echo -e "\nSuccessfully started the dead-mans-switch service. Monitoring for sign of life.\n"
+echo -e "\n#########################\nStarted the dead-mans-switch service. Monitoring for sign of life.\n#########################\n"
 #
 # Start timer
 #
@@ -58,21 +58,21 @@ if ! systemctl enable --now dead-mans-switch.timer; then
     echo "Failed to enable dead-mans-switch.timer"
     exit 1
 fi
-echo -e "\nSuccessfully started the dead-mans-switch timer. Every hour, until they pull the plug.\n"
+echo -e "\n#########################\nStarted the dead-mans-switch timer. Every hour, until they pull the plug.\n#########################\n"
 #
 # Reload daemon
 #
 if ! systemctl daemon-reload; then
     echo "Failed to daemon-reload"
 fi
-echo -e "\nSuccessfully reloaded daemon. Until next time.\n"
+echo -e "\n#########################\nReloaded daemon. Until next time.\n#########################\n"
 #
 # Reset daemon
 #
 if ! systemctl reset-failed; then
     echo "Failed to reset-failed"
 fi
-echo -e "\nSuccessfully reset daemon. It's all yours.\n"
+echo -e "\n#########################\nReset daemon. It's all yours.\n#########################\n"
 #
 # Roll the dice
 #
