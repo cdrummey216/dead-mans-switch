@@ -2,12 +2,6 @@
 read -d '' -r -a deadman < /var/www/html/dms_logs/deadman.txt
 rsync -av --delete /home/${deadman}/Desktop/dms_files/. /var/www/html/dms_files/.
 
-pid=$(echo $$) # Current instance PID
-date=$(date +%s) # Seconds since Epoch
-logfile="/var/www/html/dms_logs/dms.$date.$pid.log"
-echo "{$date} RYSNC successful A" > $logfile
-echo "{$date} RYSNC successful B" >> $logfile
-
 datapath="/var/www/html/dms_logs"
 dead_man_timestamp_path="${datapath}/dmt.txt"
 
@@ -50,9 +44,10 @@ read -d '' -r -a time_delay < /var/www/html/dmtd.txt
 timestamp="$(cat "${dead_man_timestamp_path}")"
 [ -z "${timestamp}" ] && echo "No timestamp in timestamp file. Exiting." && exit 1
 time_now="$(date +%s)"
-
+day_before="$(date -d '+1 day' +%s)"
 # In hours
 time_diff=$(( ( "${time_now}" - "${timestamp}" ) / 3600 ))
+time_deal=$(( ( "${day_before}" - "${time_now}" ) / 3600 ))
 echo "${time_diff} hours have passed since the last sign of life."
 # 336 hours are 14 days
 if [ "$time_diff" -ge "$time_delay" ]; then
@@ -72,9 +67,14 @@ fi
 [ -f "${warning_sent}" ] && echo "The warning has been sent already." && exit 0
 
 # If the time difference has reached 336-24 hours before the send threshold, we send a warning (if not already done)
-if [ "$time_diff" -ge 312 ]; then
-    echo "Sending warning email..."
+if [ "$time_deal" -ge 24 ]; then
+    echo "Sending warning email... {$time_deal} "
     printf "%s\n Sending warning email..." && python3 /var/www/html/dms_warning_emailer.py "$dead_address"
     echo "No further warning emails will be sent."
     touch "${warning_sent}"
 fi
+
+pid=$(echo $$) # Current instance PID
+date=$(date +%s) # Seconds since Epoch
+logfile="/var/www/html/dms_logs/dms.$date.$pid.log"
+echo "LOG ITEM {$date} {$time_now} " > $logfile

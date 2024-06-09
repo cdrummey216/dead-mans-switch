@@ -1,8 +1,5 @@
 <?php
 //Required in /var/www/html to update file contents;
-//sudo chmod 0777 dmm.txt
-//sudo chmod 0777 dmr.txt
-//sudo chmod 0777 dme.txt
 
 $dir = "/var/www/html/";
 $fn = $_POST['fname'];
