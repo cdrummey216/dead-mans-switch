@@ -15,10 +15,6 @@ if len(sys.argv) < 1:
     exit()
 
 recipient = sys.argv[1]
-
-d = datetime.now() - timedelta(hours=336, minutes=00)
-then = d.strftime('%Y-%m-%d %H:%M:%S')
-
 silmaril0 = Path('/var/www/html/dmm.txt').read_text()
 silmaril1 = Path('/var/www/html/dme.txt').read_text()
 silmaril2 = Path('/var/www/html/mailserver.txt').read_text()
@@ -26,6 +22,10 @@ silmaril3 = Path('/var/www/html/mailserver_login.txt').read_text()
 silmaril4 = Path('/var/www/html/mailserver_password.txt').read_text()
 silmaril5 = Path('/var/www/html/mailserver_port.txt').read_text()
 silmaril6 = Path('/var/www/html/mailserver_from.txt').read_text()
+silmaril7 = Path('/var/www/html/dmtd.txt').read_text()
+
+d = datetime.now() - timedelta(hours=silmaril7, minutes=00)
+then = d.strftime('%Y-%m-%d %H:%M:%S')
 
 # Configuration
 
