@@ -9,8 +9,18 @@
 </head>
 <body onload="startTime()">
 <h1>Dead Man's Clock</h1>
+<div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+<style>
+.clock {
+    color: black;
+    font-size: 60px;
+    font-family: Orbitron;
+    letter-spacing: 7px;
+   
 
 
+}
+</style>
 <h3>LAST SIGN OF LIFE:</h3>
 <?php
 $output = shell_exec('./dms-update.sh');
@@ -23,6 +33,36 @@ echo "<div>$output</div>";
 <h3></h3>
 <div id="datei"></div>
 <script>
+function showTime(){
+    var date = new Date();
+    var h = date.getHours(); // 0 - 23
+    var m = date.getMinutes(); // 0 - 59
+    var s = date.getSeconds(); // 0 - 59
+    var session = "AM";
+    
+    if(h == 0){
+        h = 12;
+    }
+    
+    if(h > 12){
+        h = h - 12;
+        session = "PM";
+    }
+    
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    s = (s < 10) ? "0" + s : s;
+    
+    var time = h + ":" + m + ":" + s + " " + session;
+    document.getElementById("MyClockDisplay").innerText = time;
+    document.getElementById("MyClockDisplay").textContent = time;
+    
+    setTimeout(showTime, 1000);
+    
+}
+
+showTime();
+
 function startTime() {
     var today = new Date(Date.now() + 12096e5);
     var hr = today.getHours();
