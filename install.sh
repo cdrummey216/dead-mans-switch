@@ -2,6 +2,20 @@
 #
 read -p "What's your username, deadman? As above, so below: " deadmanname
 #
+# install prequisites
+#
+if ! apt install python3 apache2; then
+    echo "Failed to copy to /var/www/html"
+fi
+echo -e "\n#########################\n installed python3 and apache2.\n#########################\n"
+#
+# install prequisites
+#
+if ! apt install --no-install-recommends php8.1; then
+    echo "Failed to copy to /var/www/html"
+fi
+echo -e "\n#########################\n Installed php8.1.\n#########################\n"
+#
 # Copy the html files
 #
 if ! cp -a ./html/. /var/www/html; then
@@ -40,6 +54,13 @@ echo -e "\n#########################\nLogged sign of life. You're alive.\n######
 # Create the desktop folder for dms files
 #
 if ! mkdir "/home/$deadmanname/Desktop/dms_files"; then
+    echo "Failed to create /dms_files on the desktop, may already exist"
+fi
+echo -e "\n#########################\nCreated a /dms_file folder on the desktop. Time to fill it with something.\n#########################\n"
+#
+# chmod the desktop folder for dms files
+#
+if ! chmod -R 0777 "/home/$deadmanname/Desktop/dms_files"; then
     echo "Failed to create /dms_files on the desktop, may already exist"
 fi
 echo -e "\n#########################\nCreated a /dms_file folder on the desktop. Time to fill it with something.\n#########################\n"
