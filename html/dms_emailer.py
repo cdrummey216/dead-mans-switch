@@ -24,7 +24,7 @@ silmaril5 = Path('/var/www/html/mailserver_port.txt').read_text()
 silmaril6 = Path('/var/www/html/mailserver_from.txt').read_text()
 silmaril7 = Path('/var/www/html/dmtd.txt').read_text()
 
-d = datetime.now() - timedelta(hours=silmaril7, minutes=00)
+d = datetime.now() - timedelta(hours=336, minutes=00)
 then = d.strftime('%Y-%m-%d %H:%M:%S')
 
 # Configuration

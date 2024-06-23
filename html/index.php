@@ -97,7 +97,7 @@ function checkTime(i) {
 </script>
 
  <h3>SERVICE MONITOR</h3>
-            <?php
+<?php
         if(array_key_exists('button1', $_POST)) { 
             button1(); 
         } 
@@ -136,16 +136,11 @@ function checkTime(i) {
     ?> 
  
     <form method="post"> 
-        <input type="submit" name="button1"
-                class="button" value="Start" /> 
-          
-        <input type="submit" name="button2"
-                class="button" value="Status" />
-         <input type="submit" name="button3"
-                class="button" value="Stop" /> 
-	<input type="submit" name="button4"
-                class="button" value="Test" />
+        <input type="submit" name="button1" class="button" value="Start" />           
+        <input type="submit" name="button2" class="button" value="Status" />
+         <input type="submit" name="button3" class="button" value="Stop" /> 
+	<input type="submit" name="button4" class="button" value="Test" />
     </form>
-            <h3><a href="/action.php">CONFIGURE SWITCH</a></h3>
+<h3><a href="/action.php">CONFIGURE SWITCH</a></h3>
 </body>
 </html>
