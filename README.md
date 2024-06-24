@@ -8,6 +8,6 @@ You're on your Linux machine and looking for a solution to a unique problem. You
 
 Download this repo and open a terminal. Run ‘sudo bash ./install.sh’, and then enter your Linux username. This install process will copy code to your localhost (in /var/www/html) and create/start the dead man’s switch service (in /etc/systemd/system). It will also create a folder on your desktop called /dms_files and these are the files that will be delivered as email attachments when the switch is activated.
 
-Now, go to your ‘localhost’ in a browser to configure your switch and to update your timestamp. Or, you can always rely on 'sudo bash /var/www/html/dms-update.sh' to update your timestamp.
+Now, go to your ‘localhost’ in a browser to configure your switch and to update your timestamp. Or, you can rely on 'sudo bash /var/www/html/dms-update.sh'.
 
-So, this is 'goodbye', this is 'until next timestamp...' ~deadman
+So, this is 'goodbye', this is 'to whomever it may concern', this is 'until your next timestamp...' ~deadman
