@@ -2,6 +2,8 @@
 read -d '' -r -a deadman < /var/www/html/dms_logs/deadman.txt
 rsync -av --delete /home/${deadman}/Desktop/dms_files/. /var/www/html/dms_files/.
 
+# Original Script by kescherCode
+# https://github.com/kescherCode/dead-mans-switch/blob/main/dms.sh
 datapath="/var/www/html/dms_logs"
 dead_man_timestamp_path="${datapath}/dmt.txt"
 
@@ -47,17 +49,12 @@ time_now="$(date +%s)"
 
 # In hours
 time_diff=$(( ( "${time_now}" - "${timestamp}" ) / 3600 ))
-echo "${time_diff} hours have passed since the last sign of life."
+echo "${time_diff} hours have passed since the last sign of life. But, testing anyways"
 # 336 hours are 14 days
 if [ 1 -ge 1 ]; then
-    echo "The switch is now being triggered."
-    for f in "${send_addresses[@]}"; do
-        echo "Sending mail to ${f}..."
-        printf "%s\n Sending dmm to ${f}..." && python3 /var/www/html/dms_emailer.py "$dead_address"
-    done
-    echo "Sending confirmation mail to address of dead person..."
-    printf "%s\n Sending confirmation email..." && python3 /var/www/html/dms_emailer.py "$dead_address"
-    echo "All further executions of this script will now result in an immediate exit."
+    echo "The switch is now being tested. Sending test email to this deadman (dme.txt)."
+    printf "%s\n Sending email..." && python3 /var/www/html/dms_emailer.py "$dead_address"
+    echo "All further executions of this script will now result in an immediate exit. Test complete."
     exit 0
 fi
 
