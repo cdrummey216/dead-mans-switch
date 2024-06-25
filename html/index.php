@@ -138,7 +138,7 @@ function checkTime(i) {
         }
         function button1() { 
             $output0 = shell_exec('systemctl start dead-mans-switch');
-	    echo "<div>$output0</div>";
+	    echo "<div class=consolebody>$output0</div>";
         } 
         function button2() { 
             $output1 = shell_exec('systemctl status dead-mans-switch');
@@ -146,15 +146,15 @@ function checkTime(i) {
         } 
         function button3() { 
 		$output2 = shell_exec('systemctl stop dead-mans-switch');
-		echo "<div>$output2</div>";
+		echo "<div class=consolebody>$output2</div>";
         } 
         function button4() { 
 		$output3 = shell_exec('./dms_test.sh');
-		echo "<div>$output3</div>";
+		echo "<div class=consolebody>$output3</div>";
         } 
 	function button5() { 
 		$output4 = shell_exec('systemctl stop dead-mans-switch');
-		echo "<div>$output4</div>";
+		echo "<div class=consolebody>$output4</div>";
         } 
     ?> 
 <h3><a href="/action.php">CONFIGURE SWITCH</a></h3>
