@@ -9,6 +9,7 @@
 </head>
 <body onload="startTime()">
 <h1>Dead Man's Clock</h1>
+<i>(your local time)</i>
 <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
 <style>
 .clock {
@@ -19,6 +20,20 @@
    
 
 
+}
+.consolebody {
+  border-radius: 15px;
+  margin-top: 15px;
+  box-sizing: border-box;
+  padding: 20px;
+  height: calc(100% - 40px);
+  overflow: scroll;
+  background-color: #000;
+  color: #63de00;
+}
+
+.consolebody p {
+  line-height: 1.5rem;
 }
 </style>
 <h3>LAST SIGN OF LIFE:</h3>
@@ -97,7 +112,15 @@ function checkTime(i) {
 </script>
 
  <h3>SERVICE MONITOR</h3>
-<?php
+
+ 
+    <form method="post"> 
+        <input type="submit" name="button1" class="button" value="Start" />           
+        <input type="submit" name="button2" class="button" value="Status" />
+         <input type="submit" name="button3" class="button" value="Stop" /> 
+	<input type="submit" name="button4" class="button" value="Test" />
+    </form>
+    <?php
         if(array_key_exists('button1', $_POST)) { 
             button1(); 
         } 
@@ -119,7 +142,7 @@ function checkTime(i) {
         } 
         function button2() { 
             $output1 = shell_exec('systemctl status dead-mans-switch');
-	    echo "<div>Status: $output1</div>"; 
+	    echo "<div class=consolebody>Status: $output1</div>"; 
         } 
         function button3() { 
 		$output2 = shell_exec('systemctl stop dead-mans-switch');
@@ -134,13 +157,6 @@ function checkTime(i) {
 		echo "<div>$output4</div>";
         } 
     ?> 
- 
-    <form method="post"> 
-        <input type="submit" name="button1" class="button" value="Start" />           
-        <input type="submit" name="button2" class="button" value="Status" />
-         <input type="submit" name="button3" class="button" value="Stop" /> 
-	<input type="submit" name="button4" class="button" value="Test" />
-    </form>
 <h3><a href="/action.php">CONFIGURE SWITCH</a></h3>
 </body>
 </html>
