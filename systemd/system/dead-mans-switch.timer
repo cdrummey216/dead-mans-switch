@@ -3,7 +3,7 @@ Description=Dead mans switch timer
 Requires=dead-mans-switch.service
 
 [Timer]
-OnCalendar=*:0/1
+OnCalendar=*:0/59
 Unit=dead-mans-switch.service
 
 [Install]
