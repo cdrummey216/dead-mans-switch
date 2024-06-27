@@ -49,6 +49,7 @@ echo "<div>$output</div>";
 </div>
 <h3></h3>
 <div id="datei"></div>
+<div id="dmtd" style="display:block;"></div>
 <script>
 function showTime(){
     var date = new Date();
@@ -80,8 +81,20 @@ function showTime(){
 
 showTime();
 
-function startTime() {
-    var today = new Date(Date.now() + 12096e5);
+
+async function startTime() {
+  
+     const data = await fetch('/dmtd.txt')
+     .then(response => response.text())
+     .then(text => {
+     const dmtd = Number(text);
+     
+     return dmtd;
+     }); 
+    console.log(data);
+    var today = new Date(Date.now());
+    const hoursToAdd = data * 60 * 60 * 1000;
+    today.setTime(today.getTime() + hoursToAdd);
     var hr = today.getHours();
     var min = today.getMinutes();
     var sec = today.getSeconds();
