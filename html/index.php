@@ -30,6 +30,8 @@
   overflow: scroll;
   background-color: #000;
   color: #63de00;
+  width: 50%;
+  margin-left: 25%;
 }
 
 .consolebody p {
