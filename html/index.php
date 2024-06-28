@@ -8,7 +8,7 @@
   <script src="https://unpkg.com/@pqina/flip/dist/flip.min.js"></script>
 </head>
 <body onload="startTime()">
-<h1>Dead Man's Clock</h1>
+<h1 style="font-size: 77px;margin-bottom: 5px;">DEAD MAN'S CLOCK</h1>
 <i>(your local time)</i>
 <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
 <style>
@@ -134,6 +134,7 @@ function checkTime(i) {
         <input type="submit" name="button2" class="button" value="Status" />
          <input type="submit" name="button3" class="button" value="Stop" /> 
 	<input type="submit" name="button4" class="button" value="Test" />
+	<input type="submit" name="button5" class="button" value="Update" />
     </form>
     <?php
         if(array_key_exists('button1', $_POST)) { 
@@ -168,7 +169,7 @@ function checkTime(i) {
 		echo "<div class=consolebody>$output3</div>";
         } 
 	function button5() { 
-		$output4 = shell_exec('systemctl stop dead-mans-switch');
+		$output4 = shell_exec('./dms-update.sh');
 		echo "<div class=consolebody>$output4</div>";
         } 
     ?> 
