@@ -1,5 +1,7 @@
 ![DMS](html/dms_files/dms.png)
 
+_"But to the Atani I will give a new gift."_ - Eru Ilúvatar
+
 # dead-mans-switch
 
 Here we are.
