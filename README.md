@@ -1,6 +1,8 @@
 ![DMS](html/dms_files/dms.png)
 
-_"But to the Atani I will give a new gift."_ - Eru Ilúvatar
+_"But to the Atani I will give a new gift."_ - Eru Ilúvatar (on Death)
+
+"Life is good." - Whoever (on Life)
 
 # dead-mans-switch
 
