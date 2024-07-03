@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#runuser -l  user -c '/home/user/Downloads/dead-mans-switch-main/html/send-mail.sh cdrummey216@gmail.com'
+#runuser -l  user -c '/home/user/Downloads/dead-mans-switch-main/html/send-mail.sh example@gmail.com'
 datapath="/var/www/html/dms_files"
 dead_man_message_path="/var/www/html/dmm.txt"
 dead_man_email_path="/var/www/html/dme.txt"
