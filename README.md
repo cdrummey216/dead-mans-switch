@@ -2,7 +2,7 @@
 
 _"But to the Atani I will give a new gift."_ - Eru Ilúvatar (on Death)
 
-"Life is good." - Whoever (on Life)
+_"Life is good."_- Whoever (on Life)
 
 # dead-mans-switch
 
