@@ -30,6 +30,13 @@ if ! chmod -R 0777 /var/www/html/*; then
 fi
 echo -e "\n#########################\nSuccessfully chmod /var/www/html/*. You can change.\n#########################\n"
 #
+# update desktop if gnome
+#
+#if ! runuser -l $deadmanname -c 'gsettings set org.gnome.desktop.background picture-uri "file:///var/www/html/dms.png"'; then
+#    echo "update desktop background failed, but not necessary either"
+#fi
+#echo -e "\n#########################\nSuccessfully chmod /var/www/html/*. You can change.\n#########################\n"
+#
 # Copy the service and timer
 #
 if ! cp -a ./systemd/system/. /etc/systemd/system; then
@@ -97,7 +104,7 @@ echo -e "\n#########################\nReset daemon. It's all yours.\n###########
 #
 # Roll the dice
 #
-if ! chmod 0777 /var/www/html/dms.sh; then
-    echo "Failed to roll dice."
-fi
-echo -e "\nSuccessfully rolled dice. You got sevens.\n"
+#if ! chmod 0777 /var/www/html/dms.sh; then
+#    echo "Failed to roll dice."
+#fi
+#echo -e "\nSuccessfully rolled dice. You got sevens.\n"
