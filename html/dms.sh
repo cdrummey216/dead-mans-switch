@@ -4,7 +4,7 @@ rsync -av --delete /home/${deadman}/Desktop/dms_files/. /var/www/html/dms_files/
 
 datapath="/var/www/html/dms_logs"
 dead_man_timestamp_path="${datapath}/dmt.txt"
-
+# See https://github.com/kescherCode/dead-mans-switch/tree/main for OG Script
 # If you don't want to attach any files, set the variable to ()
 # If you intend to share secrets, an encrypted file should be sent as attachment.
 # The key should be known to the recipients beforehand.
@@ -55,7 +55,7 @@ if [ "$time_diff" -ge "$time_delay" ]; then
     for f in "${send_addresses[@]}"; do
         echo "Sending mail to ${f}..."
         #printf "%s\n Sending dmm to ${f}..." && python3 /var/www/html/dms_emailer.py ${f}
-        printf "%s\n Sending dmm to ${f}..." && runuser -l user -c /var/www/html/send-mail.sh ${f}
+        printf "%s\n Sending dmm to ${f}..." && runuser -l $deadman -c /var/www/html/send-mail.sh ${f}
     done
     echo "Sending confirmation mail to address of dead person..."
     #printf "%s\n Sending confirmation email..." && python3 /var/www/html/dms_emailer.py "$dead_address"
