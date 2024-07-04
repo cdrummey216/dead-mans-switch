@@ -6,9 +6,9 @@ _"Life is good."_- Whoever (on Life)
 
 # dead-mans-switch
 
-Here we are. On the main branch, the trunk of this tree. Thunderbird or Python for emails? Swing over to branch-3 for a version with Thunderbird integration.
+Here we are. 
 
-You're on your Linux machine and looking for a solution to a unique problem. You’ve got a message you want to deliver, but only in the case of your (early) demise. This is a NoDB application to turn your server into a configurable dead man’s switch. It will deliver a custom email message and attachments to a list of addresses after a timestamp goes stale. You're just going to need python3 and apache2. 
+You're on your Linux machine and looking for a solution to a unique problem. You’ve got a message you want to deliver, but only in the case of your (early) demise. This is a NoDB application to turn your server into a configurable dead man’s switch. It will deliver a custom email message and attachments to a list of addresses after a timestamp goes stale. You're just going to need python3 and apache2. Oh, and Thunderbird configured.
 
 Download this repo and open a terminal. Run ‘sudo bash ./install.sh’, and then enter your Linux username. This install process will copy code to your localhost (in /var/www/html) and create/start the dead man’s switch service (in /etc/systemd/system). It will also create a folder on your desktop called /dms_files and these are the files that will be delivered as email attachments when the switch is activated.
 
