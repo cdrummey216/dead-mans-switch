@@ -1,12 +1,12 @@
+Need help? Reach out to an extended hand/open ear here: https://988helpline.org/
+
 ![DMS](html/dms_files/dms.png)
 
 _"But to the Atani I will give a new gift."_ - Eru Ilúvatar (on Death)
 
 _"Life is good."_- Whoever (on Life)
 
-Psalm 23:1-6 FTK
-
-Need help? Reach out to an extended hand here: https://988helpline.org/
+Psalm 23:1-6 For The Kingdom
 
 # dead-mans-switch
 
