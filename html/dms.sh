@@ -47,19 +47,20 @@ time_now="$(date +%s)"
 day_before="$(date -d '+1 day' +%s)"
 # In hours
 time_diff=$(( ( "${time_now}" - "${timestamp}" ) / 3600 ))
-time_deal=$(( ( "${day_before}" - "${time_now}" ) / 3600 ))
-echo "${time_diff} hours have passed since the last sign of life."
+time_deal=$(( ( "${time_delay}" - "${time_diff}") - 24 ))
+
+echo "${time_diff} hours have passed since the last sign of life.${time_deal} "
 # 336 hours are 14 days
 if [ "$time_diff" -ge "$time_delay" ]; then
     echo "The switch is now being triggered."
     for f in "${send_addresses[@]}"; do
         echo "Sending mail to ${f}..."
         #printf "%s\n Sending dmm to ${f}..." && python3 /var/www/html/dms_emailer.py ${f}
-        printf "%s\n Sending dmm to ${f}..." && runuser -l $deadman -c /var/www/html/send-mail.sh ${f}
+        printf "%s\n Sending dmm to ${f}..." && runuser -l $deadman -c "/var/www/html/send-mail.sh ${f}"
     done
     echo "Sending confirmation mail to address of dead person..."
     #printf "%s\n Sending confirmation email..." && python3 /var/www/html/dms_emailer.py "$dead_address"
-    printf "%s\n Sending confirmation email with Thunderbird..." && runuser -l $deadman -c /var/www/html/send-mail.sh $dead_address
+    printf "%s\n Sending confirmation email with Thunderbird..." && runuser -l $deadman -c "/var/www/html/send-mail.sh $dead_address"
     echo "All further executions of this script will now result in an immediate exit."
     touch "${dms_sent}"
     exit 0
@@ -69,10 +70,10 @@ fi
 [ -f "${warning_sent}" ] && echo "The warning has been sent already." && exit 0
 
 # If the time difference has reached 336-24 hours before the send threshold, we send a warning (if not already done)
-if [ "$time_deal" -ge 24 ]; then
-    echo "Sending warning email... {$time_deal} "
+if [ "$time_deal" -eq 34 ]; then
+    echo "Sending warning email... test time deal {$time_deal} "
     #printf "%s\n Sending warning email..." && python3 /var/www/html/dms_warning_emailer.py "$dead_address"
-    printf "%s\n Sending warning email with Thunderbird..." && runuser -l $deadman -c /var/www/html/send-mail_warning.sh $dead_address
+    printf "%s\n Sending warning email with Thunderbird..." && runuser -l $deadman -c "/var/www/html/send-mail_warning.sh $dead_address"
     echo "No further warning emails will be sent."
     touch "${warning_sent}"
 fi
