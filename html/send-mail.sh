@@ -6,6 +6,7 @@ dead_man_email_path="/var/www/html/dme.txt"
 
 #read -d '' -r -a dmmessage < /var/www/html/dmm.txt
 dmmessage=$(</var/www/html/dmm.txt)
+dmemail=$(</var/www/html/dme.txt)
 
 arrVar=()
 search_dir=${datapath}
@@ -14,17 +15,17 @@ do
   arrVar+=($entry)
 done
 
-#echo ${arrVar[@]}
+echo ${dmemail}
 
 printf -v joined '%s,' "${arrVar[@]}"
 echo "${joined%,}"
 
-#echo "${dmmessage}"
+echo "${dmmessage}"
 export DISPLAY=:0
 printf "%s\n Sending confirmation email..." && thunderbird -compose "to='$1',subject='A Dead Man's Switch was activated',body='$dmmessage',attachment='${joined%,}'" & 
-sleep 2
+sleep 5
 ydotool key ctrl+enter 
-sleep 2 
+sleep 5 
 ydotool key enter
 
 echo "Done!"

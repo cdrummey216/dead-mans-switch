@@ -49,15 +49,17 @@ day_before="$(date -d '+1 day' +%s)"
 time_diff=$(( ( "${time_now}" - "${timestamp}" ) / 3600 ))
 time_deal=$(( ( "${time_delay}" - "${time_diff}") - 24 ))
 
-echo "${time_diff} hours have passed since the last sign of life.${time_deal} "
+echo "${time_diff} hours have passed since the last sign of life. "
 # 336 hours are 14 days
 if [ "$time_diff" -ge "$time_delay" ]; then
     echo "The switch is now being triggered."
-    for f in "${send_addresses[@]}"; do
-        echo "Sending mail to ${f}..."
+    #for f in "${send_addresses[@]}"; do
+     #   echo "Sending mail to ${f}..."
         #printf "%s\n Sending dmm to ${f}..." && python3 /var/www/html/dms_emailer.py ${f}
-        printf "%s\n Sending dmm to ${f}..." && runuser -l $deadman -c "/var/www/html/send-mail.sh ${f}"
-    done
+      #  printf "%s\n Sending dmm to ${f}..." && runuser -l $deadman -c "/var/www/html/send-mail.sh ${f}"
+    #done
+    echo "Sending mail to ${send_addresses}..."
+    printf "%s\n Sending dmm to ${send_addresses}..." && runuser -l $deadman -c "/var/www/html/send-mail.sh ${send_addresses}"
     echo "Sending confirmation mail to address of dead person..."
     #printf "%s\n Sending confirmation email..." && python3 /var/www/html/dms_emailer.py "$dead_address"
     printf "%s\n Sending confirmation email with Thunderbird..." && runuser -l $deadman -c "/var/www/html/send-mail.sh $dead_address"
@@ -70,7 +72,7 @@ fi
 [ -f "${warning_sent}" ] && echo "The warning has been sent already." && exit 0
 
 # If the time difference has reached 336-24 hours before the send threshold, we send a warning (if not already done)
-if [ "$time_deal" -eq 34 ]; then
+if [ "$time_deal" -eq 24 ]; then
     echo "Sending warning email... test time deal {$time_deal} "
     #printf "%s\n Sending warning email..." && python3 /var/www/html/dms_warning_emailer.py "$dead_address"
     printf "%s\n Sending warning email with Thunderbird..." && runuser -l $deadman -c "/var/www/html/send-mail_warning.sh $dead_address"
