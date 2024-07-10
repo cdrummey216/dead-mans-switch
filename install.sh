@@ -4,10 +4,10 @@ read -p "What's your username, deadman? As above, so below: " deadmanname
 #
 # install prequisites
 #
-if ! apt install python3 apache2 ydotool; then
+if ! apt install python3 apache2 ydotool dnsutils; then
     echo "Failed to copy to /var/www/html"
 fi
-echo -e "\n#########################\n installed python3 and apache2.\n#########################\n"
+echo -e "\n#########################\n installed python3, apache2, ydotool and dnsutils.\n#########################\n"
 #
 # install prequisites
 #
