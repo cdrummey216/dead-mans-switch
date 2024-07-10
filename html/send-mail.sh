@@ -15,17 +15,17 @@ do
   arrVar+=($entry)
 done
 
-echo ${dmemail}
+#echo "${dmemail}"
 
 printf -v joined '%s,' "${arrVar[@]}"
 echo "${joined%,}"
 
-echo "${dmmessage}"
+#echo "${dmmessage}"
 export DISPLAY=:0
-printf "%s\n Sending confirmation email..." && thunderbird -compose "to='$1',subject='A Dead Man's Switch was activated',body='$dmmessage',attachment='${joined%,}'" & 
+printf "%s\n Sending confirmation email..." && thunderbird -compose "to='$dmemail',bcc='$1',subject='A Dead Man's Switch was activated',body='$dmmessage',attachment='${joined%,}'" & 
 sleep 5
 ydotool key ctrl+enter 
-sleep 5 
+sleep 2 
 ydotool key enter
 
 echo "Done!"
