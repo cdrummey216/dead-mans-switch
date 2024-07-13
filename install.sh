@@ -9,6 +9,12 @@ if ! apt install python3 apache2 ydotool dnsutils; then
 fi
 echo -e "\n#########################\n Installed python3, apache2, ydotool and dnsutils.\n#########################\n"
 #
+# Disabling the auto-lock allows the switch to use the deadman's final session to send the email. 
+# As long as this hardware stays online and connected, the service will handle the rest. 
+# If this is not an option, see the python3 API implementation in the #comments# of ./dms.sh. 
+# Otherwise, plug in the switch and use it as a headless NAS, just be sure to 
+# update your timestamp periodically before each expiration. Information was always free, keep it that way. ~deadman
+#
 if ! gsettings set org.gnome.desktop.screensaver lock-enabled false; then
     echo "Failed to disable screen lock. This may impact email delivery."
 fi
