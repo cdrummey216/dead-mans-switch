@@ -7,7 +7,12 @@ read -p "What's your username, deadman? As above, so below: " deadmanname
 if ! apt install python3 apache2 ydotool dnsutils; then
     echo "Failed to copy to /var/www/html"
 fi
-echo -e "\n#########################\n installed python3, apache2, ydotool and dnsutils.\n#########################\n"
+echo -e "\n#########################\n Installed python3, apache2, ydotool and dnsutils.\n#########################\n"
+#
+if ! gsettings set org.gnome.desktop.screensaver lock-enabled false; then
+    echo "Failed to disable screen lock. This may impact email delivery."
+fi
+echo -e "\n#########################\n Unlocked account for email wakeup when activation occurs.\n#########################\n"
 #
 # install prequisites
 #
