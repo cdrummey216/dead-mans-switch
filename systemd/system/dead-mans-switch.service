@@ -1,8 +1,8 @@
 [Unit]
-Description=Dead mans switch
+Description=Dead Man's Switch
 
 [Service]
-Type=oneshot
+Type=forking
 ExecStart=/bin/sh -c "/var/www/html/dms.sh"
 
 [Install]
