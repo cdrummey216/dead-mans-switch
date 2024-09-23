@@ -1,6 +1,5 @@
+<!DOCTYPE html>
 <?php
-
-if (isset($_GET['execute'])) {
     $output = "";
     $command = "";
     switch ($_GET['execute']) {
@@ -26,14 +25,12 @@ if (isset($_GET['execute'])) {
             break;
         default: die("Missing Command");
     }
-}
 ?>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Restricted Area</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <LINK href="style.css" rel="stylesheet" type="text/css">
     <style>
         body {
             margin: 5vw;
@@ -45,22 +42,45 @@ if (isset($_GET['execute'])) {
             width: 30vw;
         }
     </style>
+    <style>
+.clock {
+    color: black;
+    font-size: 60px;
+    font-family: Orbitron;
+    letter-spacing: 7px;
+   
+
+
+}
+.consolebody {
+  border-radius: 15px;
+  margin-top: 15px;
+  box-sizing: border-box;
+  padding: 20px;
+  height: calc(100% - 40px);
+  overflow: scroll;
+  background-color: #000;
+  color: #63de00;
+  width: 50%;
+  margin-left: 25%;
+}
+
+.consolebody p {
+  line-height: 1.5rem;
+}
+</style>
 </head>
 <body>
-<?php if isset($_GET['execute'])) { ?>
-    <a type="submit" class="btn btn-primary" href="?execute=1">Command 1: status</a>
-    <a type="submit" class="btn btn-primary" href="?execute=2">Command 2: start</a>
-    <a type="submit" class="btn btn-primary" href="?execute=3">Command 3: stop</a>
-    <a type="submit" class="btn btn-primary" href="?execute=4">Command 4: test</a>
-    <a type="submit" class="btn btn-primary" href="?execute=5">Command 5: update</a>
-    <?php if (isset($output)) { ?>
-        <div class="alert alert-dismissible alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <h4 class="alert-heading">Command Output</h4>
-            <div class="mb-0"><?php echo nl2br($output); ?></div>
-        </div>
-    <?php }
-} else { ?>
-<?php } ?>
+<h1>hello, world</h1>
+    <a type="submit" class="button" href="?execute=1">status</a>
+    <a type="submit" class="button" href="?execute=2">start</a>
+    <a type="submit" class="button" href="?execute=3">stop</a>
+    <a type="submit" class="button" href="?execute=4">test</a>
+    <a type="submit" class="button" href="?execute=5">update</a>
+	<div class="alert">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<h4 class="alert-heading">Command Output</h4>
+	<div class="consolebody"><?php echo nl2br($output); ?></div>
+	</div>
 </body>
 </html>
