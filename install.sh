@@ -36,7 +36,7 @@ echo -e "\n#########################\nCopied switch to /var/www/html. You have s
 #
 # chmod the html files
 #
-if ! chmod -R 0777 /var/www/html/*; then
+if ! chmod -Rf  777 /var/www/html/*; then
     echo "Failed to chmod /var/www/html/*"
 fi
 echo -e "\n#########################\nSuccessfully chmod /var/www/html/*. You can change.\n#########################\n"
