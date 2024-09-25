@@ -68,19 +68,19 @@
 .consolebody p {
   line-height: 1.5rem;
 }
+
 </style>
 </head>
 <body>
-<h1>hello, world</h1>
-    <a type="submit" class="button" href="?execute=1">status</a>
-    <a type="submit" class="button" href="?execute=2">start</a>
-    <a type="submit" class="button" href="?execute=3">stop</a>
-    <a type="submit" class="button" href="?execute=4">test</a>
-    <a type="submit" class="button" href="?execute=5">update</a>
-	<div class="alert">
-	<button type="button" class="close" data-dismiss="alert">&times;</button>
-	<h4 class="alert-heading">Command Output</h4>
+	<h1>Caveman's Terminal</h1>
+	
+	<a type="submit" class="button" href="?execute=1">status</a>
+	<a type="submit" class="button" href="?execute=2">start</a>
+	<a type="submit" class="button" href="?execute=3">stop</a>
+    	<a type="submit" class="button" href="?execute=4">test</a>
+    	<a type="submit" class="button" href="?execute=5">update</a>
+	<h2>Command Output</h4>
 	<div class="consolebody"><?php echo nl2br($output); ?></div>
-	</div>
+	
 </body>
 </html>

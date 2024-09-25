@@ -40,7 +40,7 @@
 </style>
 <h3>LAST SIGN OF LIFE:</h3>
 <?php
-$output = shell_exec('./dms-update.sh');
+$output = shell_exec('/usr/bin/bash /var/www/html/dms-update.sh');
 echo "<div>$output</div>";
 ?>
 <h3>NEXT SWITCH ACTIVATION:</h3>
@@ -125,54 +125,7 @@ function checkTime(i) {
     return i;
 }
 </script>
-
- <h3>SERVICE MONITOR</h3>
-
- 
-    <form method="post"> 
-        <input type="submit" name="button1" class="button" value="Start" />           
-        <input type="submit" name="button2" class="button" value="Status" />
-         <input type="submit" name="button3" class="button" value="Stop" /> 
-	<input type="submit" name="button4" class="button" value="Test" />
-	<input type="submit" name="button5" class="button" value="Update" />
-    </form>
-    <?php
-        if(array_key_exists('button1', $_POST)) { 
-            button1(); 
-        } 
-        else if(array_key_exists('button2', $_POST)) { 
-            button2(); 
-        }
-        else if(array_key_exists('button3', $_POST)) { 
-            button3(); 
-        }
-	else if(array_key_exists('button4', $_POST)) { 
-            button4(); 
-        }
-	else if(array_key_exists('button5', $_POST)) { 
-            button5(); 
-        }
-        function button1() { 
-            $output0 = shell_exec('systemctl start dead-mans-switch');
-	    echo "<div class=consolebody>$output0</div>";
-        } 
-        function button2() { 
-            $output1 = shell_exec('systemctl status dead-mans-switch');
-	    echo "<div class=consolebody>Status: $output1</div>"; 
-        } 
-        function button3() { 
-		$output2 = shell_exec('systemctl stop dead-mans-switch');
-		echo "<div class=consolebody>$output2</div>";
-        } 
-        function button4() { 
-		$output3 = shell_exec('./dms_test.sh');
-		echo "<div class=consolebody>$output3</div>";
-        } 
-	function button5() { 
-		$output4 = shell_exec('./dms-update.sh');
-		echo "<div class=consolebody>$output4</div>";
-        } 
-    ?> 
-<h3><a href="/action.php">CONFIGURE SWITCH</a></h3>
+<h3><a href="/shell.php?execute=1">CAVEMAN'S TERMINAL</a></h3>
+<h3><a href="/action.php">CONFIGURE YOUR SWITCH</a></h3>
 </body>
 </html>
